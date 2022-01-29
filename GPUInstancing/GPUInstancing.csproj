@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net6.0;net6.0-android</TargetFrameworks>
+    <MonoGamePlatform>DesktopGL</MonoGamePlatform>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FNA.NET" Version="1.0.0.71-develop" />
+  </ItemGroup>
+
+</Project>
