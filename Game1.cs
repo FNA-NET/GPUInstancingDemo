@@ -12,6 +12,7 @@ public class Game1 : Game
         public float X;
         public float Y;
         public Vector4 Diffuse;
+        public float TexIndex;
     }
 
     VertexBuffer _vertexBuffer;
@@ -28,6 +29,7 @@ public class Game1 : Game
     Matrix _projection;
 
     private Texture2D _texture1;
+    private Texture2D _texture2;
     private Effect _instancingEffect;
 
     public Game1()
@@ -75,6 +77,7 @@ public class Game1 : Game
                     Random.Shared.NextSingle(),
                     Random.Shared.NextSingle(),
                     Random.Shared.NextSingle());
+            _instances[i].TexIndex = Random.Shared.Next(2);
         }
 
         _instanceBuffer.SetData(_instances);
@@ -83,6 +86,7 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _texture1 = Content.Load<Texture2D>("Image1");
+        _texture2 = Content.Load<Texture2D>("Image2");
         _instancingEffect = Content.Load<Effect>("Effects/GPUInstancing");
 
         _projection = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width,
@@ -109,12 +113,14 @@ public class Game1 : Game
         }
 
         {
-            VertexElement[] streamElements = new VertexElement[2];
+            VertexElement[] streamElements = new VertexElement[3];
             // float4
             streamElements[0] = new VertexElement(0, VertexElementFormat.Vector4,
                         VertexElementUsage.Position, 1);
             streamElements[1] = new VertexElement(sizeof(float) * 4, VertexElementFormat.Vector4,
                         VertexElementUsage.Color, 1);
+            streamElements[2] = new VertexElement(sizeof(float) * 8, VertexElementFormat.Single,
+                        VertexElementUsage.PointSize, 0);
             _instanceVertexDeclaration = new VertexDeclaration(streamElements);
 
             _instanceBuffer = new VertexBuffer(this.GraphicsDevice, _instanceVertexDeclaration,
@@ -154,6 +160,7 @@ public class Game1 : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         GraphicsDevice.Textures[0] = _texture1;
+        GraphicsDevice.Textures[1] = _texture2;
         GraphicsDevice.SetVertexBuffers(_bindings);
         GraphicsDevice.Indices = _indexBuffer;
 

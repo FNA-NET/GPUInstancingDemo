@@ -1,6 +1,7 @@
 #include "Macros.fxh"
 
 DECLARE_TEXTURE(Texture, 0);
+DECLARE_TEXTURE(Texture1, 1);
 
 float4x4 Projection    _vs(c0) _cb(c0);
 
@@ -17,6 +18,7 @@ struct VSOutput
     float4 Diffuse    : COLOR0;
     float2 TexCoord   : TEXCOORD0;
     float4 PositionPS : SV_Position;
+    float2 TexIndex   : TEXCOORD1;
 };
 
 float4x4 CreateScale(float xScale, float yScale, float zScale)
@@ -30,7 +32,7 @@ float4x4 CreateTranslation(float x, float y, float z)
 }
 
 // Vertex shader: texture + vertex color
-VSOutput MainVS(VSInput input, float4 trans : POSITION1, float4 diffuse : COLOR1)
+VSOutput MainVS(VSInput input, float4 trans : POSITION1, float4 diffuse : COLOR1, float texIndex : PSIZE)
 {
     VSOutput vout;
 
@@ -41,13 +43,18 @@ VSOutput MainVS(VSInput input, float4 trans : POSITION1, float4 diffuse : COLOR1
     
     vout.TexCoord = input.TexCoord;
     vout.Diffuse = diffuse;
+    vout.TexIndex = float2(texIndex, 0);
     
     return vout;
 }
 
 float4 MainPS(VSOutput input) : SV_Target0
 {
-    float4 color = SAMPLE_TEXTURE(Texture, input.TexCoord) * input.Diffuse;
+    float4 color;
+    if (input.TexIndex.x == 1)
+        color = SAMPLE_TEXTURE(Texture1, input.TexCoord) * input.Diffuse;
+    else
+        color = SAMPLE_TEXTURE(Texture, input.TexCoord) * input.Diffuse;
  
     return color;
 }
