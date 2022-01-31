@@ -1,7 +1,10 @@
 #include "Macros.fxh"
 
-DECLARE_TEXTURE(Texture, 0);
+DECLARE_TEXTURE(Texture0, 0);
 DECLARE_TEXTURE(Texture1, 1);
+DECLARE_TEXTURE(Texture2, 2);
+DECLARE_TEXTURE(Texture3, 3);
+DECLARE_TEXTURE(Texture4, 4);
 
 float4x4 Projection    _vs(c0) _cb(c0);
 
@@ -51,10 +54,25 @@ VSOutput MainVS(VSInput input, float4 trans : POSITION1, float4 diffuse : COLOR1
 float4 MainPS(VSOutput input) : SV_Target0
 {
     float4 color;
-    if (input.TexIndex.x == 1)
-        color = SAMPLE_TEXTURE(Texture1, input.TexCoord) * input.Diffuse;
-    else
-        color = SAMPLE_TEXTURE(Texture, input.TexCoord) * input.Diffuse;
+    uint idx = (uint)input.TexIndex.x;
+    switch (idx)
+    {
+        case 0:
+            color = SAMPLE_TEXTURE(Texture0, input.TexCoord) * input.Diffuse;
+            break;
+        case 1:
+            color = SAMPLE_TEXTURE(Texture1, input.TexCoord) * input.Diffuse;
+            break;
+        case 2:
+            color = SAMPLE_TEXTURE(Texture2, input.TexCoord) * input.Diffuse;
+            break;
+        case 3:
+            color = SAMPLE_TEXTURE(Texture3, input.TexCoord) * input.Diffuse;
+            break;
+        case 4:
+            color = SAMPLE_TEXTURE(Texture4, input.TexCoord) * input.Diffuse;
+            break;
+    }
  
     return color;
 }
