@@ -149,7 +149,7 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.13</Version>
     </PackageReference>
-    <PackageReference Include="FNA.NET" Version="1.0.0.71-develop" />
+    <PackageReference Include="FNA.NET" Version="1.0.0.76-develop" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
   </ItemGroup>
   <ItemGroup>
