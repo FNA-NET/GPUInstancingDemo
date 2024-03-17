@@ -15,7 +15,7 @@ namespace GPUInstancing.Android
         ScreenOrientation = ScreenOrientation.SensorLandscape,
         ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize | ConfigChanges.ScreenLayout
     )]
-    public class Activity1 : AndroidGameActivity
+    public class Activity1 : AndroidGameActivityEXT
     {
         protected override void SDLMain()
         {
