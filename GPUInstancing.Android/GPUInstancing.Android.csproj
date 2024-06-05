@@ -20,6 +20,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <AndroidAsset Include="$(OutputPath)/Content/Effects/GPUInstancing.fxb" link="Content/Effects/GPUInstancing.fxb" />
+  </ItemGroup>
+
+  <ItemGroup>
     <MonoGameContentReference Include="..\GPUInstancing\Content\Content.mgcb" Visible="false" />
   </ItemGroup>
 
