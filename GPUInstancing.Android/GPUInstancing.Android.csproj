@@ -8,6 +8,7 @@
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <RuntimeIdentifiers>android-arm64;android-x64</RuntimeIdentifiers>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PublishTrimmed>true</PublishTrimmed>
@@ -23,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FNA.NET" Version="1.0.8.2403" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
     <ProjectReference Include="..\GPUInstancing\GPUInstancing.csproj" />
   </ItemGroup>

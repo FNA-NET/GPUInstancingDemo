@@ -1,11 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net8.0;net8.0-android</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FNA.NET" Version="1.0.0.2403" />
+    <CompileShader Include="Content\Effects\GPUInstancing.fx" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FNA.NET" Version="1.0.8.2403" />
+  </ItemGroup>
+
+  <Import Project="BuildShaders.targets" />
 
 </Project>

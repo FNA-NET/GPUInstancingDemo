@@ -23,6 +23,3 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Image1.jpg
-
-#begin Effects/GPUInstancing.fxb
-/copy:Effects/GPUInstancing.fxb
