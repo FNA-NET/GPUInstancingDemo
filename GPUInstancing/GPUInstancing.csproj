@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FNA.NET" Version="1.0.8.2403" />
+    <PackageReference Include="FNA.NET" Version="1.0.8.2403" PrivateAssets="All" />
   </ItemGroup>
 
   <Import Project="BuildShaders.targets" />
