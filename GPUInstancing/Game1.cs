@@ -41,7 +41,7 @@ namespace GPUInstancing
             gdm.PreferredBackBufferWidth = 1280;
             gdm.PreferredBackBufferHeight = 720;
             gdm.IsFullScreen = false;
-            gdm.SynchronizeWithVerticalRetrace = false;
+            gdm.SynchronizeWithVerticalRetrace = true;
             IsFixedTimeStep = false;
 
             IsMouseVisible = true;
