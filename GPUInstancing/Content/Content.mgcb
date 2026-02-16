@@ -10,6 +10,8 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:FNA.NET.ContentPipeline.dll
+
 #---------------------------------- Content ---------------------------------#
 
 #begin Image1.png
@@ -23,3 +25,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Image1.jpg
+
+# begin Effects/GPUInstancing.fx
+/importer:EffectImporter
+/processor:FxcEffectProcessor
+/processorParam:DebugMode = Auto
+/processorParam:Defines=
+/build:Effects/GPUInstancing.fx
