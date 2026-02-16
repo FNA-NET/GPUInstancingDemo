@@ -6,6 +6,15 @@ namespace GPUInstancing
 {
     public class Game1 : Game
     {
+        const int WindowWidth = 1280;
+        const int WindowHeight = 720;
+
+        static Game1()
+        {
+            GraphicsDeviceManager.DefaultBackBufferWidth = WindowWidth;
+            GraphicsDeviceManager.DefaultBackBufferHeight = WindowHeight;
+        }
+
         struct SpriteInfo
         {
             public float Width;
@@ -38,8 +47,8 @@ namespace GPUInstancing
             GraphicsDeviceManager gdm = new GraphicsDeviceManager(this);
 
             // Typically you would load a config here...
-            gdm.PreferredBackBufferWidth = 1280;
-            gdm.PreferredBackBufferHeight = 720;
+            gdm.PreferredBackBufferWidth = WindowWidth;
+            gdm.PreferredBackBufferHeight = WindowHeight;
             gdm.IsFullScreen = false;
             gdm.SynchronizeWithVerticalRetrace = true;
             IsFixedTimeStep = false;

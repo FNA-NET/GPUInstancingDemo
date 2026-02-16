@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-android</TargetFramework>
+    <TargetFramework>net9.0-android</TargetFramework>
     <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
     <OutputType>Exe</OutputType>
     <MonoGamePlatform>Android</MonoGamePlatform>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <RuntimeIdentifiers>android-arm64;android-x64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>android-arm64</RuntimeIdentifiers>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -16,20 +16,15 @@
     <AndroidAotMode>Hybrid</AndroidAotMode>
     <RunAOTCompilation>true</RunAOTCompilation>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
-    <RuntimeIdentifiers>android-arm64;android-x86;android-x64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>android-arm64;</RuntimeIdentifiers>
   </PropertyGroup>
-
-  <ItemGroup>
-    <AndroidAsset Include="$(OutputPath)/Content/Effects/GPUInstancing.fxb" link="Content/Effects/GPUInstancing.fxb" />
-  </ItemGroup>
 
   <ItemGroup>
     <MonoGameContentReference Include="..\GPUInstancing\Content\Content.mgcb" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FNA.NET" Version="1.0.8.2403" />
-    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.4" />
     <ProjectReference Include="..\GPUInstancing\GPUInstancing.csproj" />
   </ItemGroup>
 </Project>
